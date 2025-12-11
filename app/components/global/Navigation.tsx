@@ -5,7 +5,7 @@ import { TfiMenu } from "react-icons/tfi";
 export default function Navigation() {
   return (
     <nav className="flex justify-between w-screen h-24 border-b border-t border-pink">
-      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className="w-8h-8 shrink-0 absolute left-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" className="w-8 h-8 shrink-0 absolute left-0">
         <path d="M0 32V0H32L0 32Z" fill="#FF2A70"/>
       </svg>
       <div className="flex items-center justify-between w-screen px-6">
