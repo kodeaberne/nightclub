@@ -8,6 +8,7 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-pink: #FF2A70;
   --font-sans: var(--font-ubuntu);
 }
 
