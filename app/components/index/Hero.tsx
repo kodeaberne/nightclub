@@ -2,9 +2,8 @@
 "use client";
 
 // Imports
-import { Suspense, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import loader from "@/public/loader/madbars.gif";
 import heroBG1 from "@/public/index/hero/hero_bg_1.webp";
 import heroBG2 from "@/public/index/hero/hero_bg_2.webp";
 import bottomLine from "@/public/index/hero/bottom_line.png";
@@ -36,8 +35,6 @@ export default function Hero() {
   }, []); // empty dependency array to run only once
 
   return (
-    <Suspense 
-      fallback={<Image src={loader} alt="Loader" width={100} height={100} className="w-full h-auto" />} >
     <section 
     className="flex flex-col gap-4 justify-center items-center bg-center h-[calc(100vh-6rem)] w-screen"
     style={{ backgroundImage: `url(${heroBG})` }}>  
@@ -62,6 +59,5 @@ export default function Hero() {
         <Image src={bottomLine} alt="Bottom Line" width={320} height={49} className="w-full h-auto" />
       </motion.div>
     </section>
-      </Suspense>
   );
 }
