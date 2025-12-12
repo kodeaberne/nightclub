@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Ubuntu } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/app/components/global/Navigation";
 import Footer from "@/app/components/global/Footer";
 
 const ubuntu = Ubuntu({
@@ -22,13 +21,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      
       <body
         className={`${ubuntu.variable} antialiased`}
       >
-        <Navigation />
+        <main className="min-h-screen w-full">
         {children}
         <Footer />
+        </main>
       </body>
     </html>
   );
