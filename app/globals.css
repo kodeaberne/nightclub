@@ -16,3 +16,9 @@ body {
 	background: var(--background);
 	color: var(--foreground);
 }
+
+.swiper-pagination {
+    position: relative !important;
+    margin-top: 20px;
+	border-radius: 0px !important;
+}
