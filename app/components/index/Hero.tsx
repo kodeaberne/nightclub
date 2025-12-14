@@ -21,7 +21,7 @@ export default function Hero() {
   // Animation transition
   const transition = {
     duration: 4,
-    ease: [0, 0.71, 0.2, 1.01],
+    ease: [0, 0.71, 0.2, 1.01] as const,
   }
 
   // Set hero background image randomly
