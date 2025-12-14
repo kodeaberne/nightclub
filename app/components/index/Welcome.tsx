@@ -6,33 +6,15 @@ import Image from 'next/image';
 import { StaticImageData } from 'next/image';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
+import Header from '@/app/components/global/Header';
 
 // Images
-import bottomLine from '@/public/global/bottom_line2.png';
 import image1 from '@/public/index/welcome/thumb1.jpg';
 import image2 from '@/public/index/welcome/reastaurant_1.jpg';
 import image3 from '@/public/index/welcome/thumb2.jpg';
 import { PiDiscoBallDuotone } from 'react-icons/pi';
 import { PiCheersDuotone } from 'react-icons/pi';
 import { PiForkKnifeDuotone } from 'react-icons/pi';
-
-// Header component
-function Header() {
-	return (
-		<div className="flex flex-col items-center justify-center pt-12 pb-6">
-			<h1 className="text-4xl font-medium tracking-[7.5%] leading-normal uppercase text-center px-8">
-				Welcome in nightclub
-			</h1>
-			<Image
-				src={bottomLine}
-				alt="Bottom Line"
-				width={320}
-				height={49}
-				className="w-full h-auto"
-			/>
-		</div>
-	);
-}
 
 // Content component
 function Content({
@@ -205,7 +187,7 @@ export default function Welcome() {
 
 	return (
 		<section className="w-full min-h-screen mb-40">
-			<Header />
+			<Header title="Welcome in nightclub" />
 			{Object.values(descriptions).map((description) => (
 				<Content
 					key={description.id}
