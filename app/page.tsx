@@ -1,4 +1,4 @@
-'use cache'
+'use cache';
 
 // Import modeules
 import { Suspense } from 'react';
@@ -9,6 +9,7 @@ import Navigation from '@/app/components/global/Navigation';
 import Welcome from '@/app/components/index/Welcome';
 import Events from '@/app/components/index/Events';
 import Gallery from '@/app/components/index/Gallery';
+import MusicPlayer from '@/app/components/index/MusicPlayer';
 
 // Fetch events from API
 const fetchEvents = async () => {
@@ -37,6 +38,7 @@ export default async function Home() {
 			<Welcome />
 			<Events events={events} />
 			<Gallery gallery={gallery} />
+			<MusicPlayer />
 		</Suspense>
 	);
 }
