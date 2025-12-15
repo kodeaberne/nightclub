@@ -12,6 +12,7 @@ import Gallery from '@/app/components/index/Gallery';
 import MusicPlayer from '@/app/components/index/MusicPlayer';
 import Video from '@/app/components/index/Video';
 import Testimonials from '@/app/components/index/Testimonials';
+import Blogposts from '@/app/components/index/Blogposts';
 
 // Fetch events from API
 const fetchEvents = async () => {
@@ -34,11 +35,19 @@ const fetchTestimonials = async () => {
 	return data;
 };
 
+// Fetch blogposts from API
+const fetchBlogposts = async () => {
+	const response = await fetch('http://localhost:4000/blogposts');
+	const data = await response.json();
+	return data;
+};
+
 // Home component
 export default async function Home() {
 	const events = await fetchEvents();
 	const gallery = await fetchGallery();
 	const testimonials = await fetchTestimonials();
+	const blogposts = await fetchBlogposts();
 	return (
 		<Suspense fallback={<div>Loading...</div>}>
 			<div className="flex flex-col font-sans">
@@ -51,6 +60,7 @@ export default async function Home() {
 			<MusicPlayer />
 			<Video />
 			<Testimonials testimonials={testimonials} />
+			<Blogposts blogposts={blogposts} />
 		</Suspense>
 	);
 }
