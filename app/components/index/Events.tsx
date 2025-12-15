@@ -16,7 +16,7 @@ import 'swiper/css/pagination';
 // Events component
 export default function Events({ events }: { events: any }) {
 	return (
-		<section className="w-full mb-40 relative pb-10">
+		<section className="w-full relative pb-10">
 			<div className="absolute inset-0 bg-[url('/index/events/slider_bg_overlay.png')] bg-cover bg-center opacity-25"></div>
 			<div className="relative z-10">
 				<Header title="Events" />
