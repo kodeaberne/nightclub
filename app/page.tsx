@@ -13,6 +13,7 @@ import MusicPlayer from '@/app/components/index/MusicPlayer';
 import Video from '@/app/components/index/Video';
 import Testimonials from '@/app/components/index/Testimonials';
 import Blogposts from '@/app/components/index/Blogposts';
+import Newsletter from '@/app/components/index/Newsletter';
 
 // Fetch events from API
 const fetchEvents = async () => {
@@ -61,6 +62,7 @@ export default async function Home() {
 			<Video />
 			<Testimonials testimonials={testimonials} />
 			<Blogposts blogposts={blogposts} />
+			<Newsletter />
 		</Suspense>
 	);
 }
