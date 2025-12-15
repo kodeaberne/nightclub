@@ -1,39 +1,38 @@
 'use server';
 
-import * as z from 'zod';
+// @ts-nocheck
 
-const EmailSchema = z.object({
-	email: z.string().email('Invalid email address'),
-});
+export const newsletterSignup = async (prevState, formData) => {
+  const emailAdress = formData.get('email');
 
-export const newsletterSignup = async (prevState: any, formData: FormData) => {
-	const emailAddress = formData.get('email');
-	const state: {
-		succes: string | null;
-		errors: { emailAddress?: string };
-		fields: { emailAddress: FormDataEntryValue | null };
-	} = {
-		succes: null,
-		errors: {},
-		fields: {
-			emailAddress,
-		},
-	};
+  const state = {
+    success: null,
+    errors: {},
+    fields: {
+      emailAdress,
+    },
+  };
 
-	if (!emailAddress) {
-		state.errors.emailAddress = 'Email is required';
-	} else {
-		const result = EmailSchema.safeParse({ email: emailAddress });
-		if (!result.success) {
-			const emailError = result.error.issues.find(
-				(issue) => issue.path[0] === 'email',
-			);
-			state.errors.emailAddress =
-				emailError?.message ?? 'Invalid email address';
-		} else {
-			state.succes = 'Successfully subscribed!';
-		}
-	}
+  if (!emailAdress) {
+    state.errors.emailAdress = 'Please fill out your email'
+  } else if (emailAdress.length < 5) {
+    state.errors.emailAdress = 'Your address must me at least 5 characters long'
+  }
 
-	return state;
-};
+  if (Object.keys(state.errors).length > 0) {
+    return state;
+  }
+
+  await new Promise((resolve) => setTimeout(resolve, 2000));
+  const response = await fetch('http://localhost:4000/newsletters', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      email: emailAdress,
+    }),
+  });
+  console.log(response)
+
+  state.success = response.ok
+  return state;
+}
