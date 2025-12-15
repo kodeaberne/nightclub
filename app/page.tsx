@@ -10,6 +10,7 @@ import Welcome from '@/app/components/index/Welcome';
 import Events from '@/app/components/index/Events';
 import Gallery from '@/app/components/index/Gallery';
 import MusicPlayer from '@/app/components/index/MusicPlayer';
+import Video from '@/app/components/index/Video';
 
 // Fetch events from API
 const fetchEvents = async () => {
@@ -39,6 +40,7 @@ export default async function Home() {
 			<Events events={events} />
 			<Gallery gallery={gallery} />
 			<MusicPlayer />
+			<Video />
 		</Suspense>
 	);
 }

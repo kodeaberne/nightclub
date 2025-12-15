@@ -22,3 +22,18 @@ body {
     margin-top: 20px;
 	border-radius: 0px !important;
 }
+
+.video-swiper .swiper-button-next,
+.video-swiper .swiper-button-prev {
+  top: auto;
+  bottom: 12px;           /* bottom area */
+  transform: none;
+}
+
+.video-swiper .swiper-button-prev {
+  place-self: end;
+}
+
+.video-swiper .swiper-button-next {
+  right: 50%;
+}
