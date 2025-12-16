@@ -51,7 +51,7 @@ const SignupForm = () => {
 			<ResponseMessage state={state} />
 			<form
 				action={postEmail}
-				className="flex flex-col gap-4 items-center w-full"
+				className="flex flex-col md:flex-row gap-4 md:gap-8 items-center w-full md:w-[60%] lg:w-[50%] xl:w-[40%]"
 			>
 				{state.errors?.emailAdress && (
 					<p className="text-pink">{state.errors.emailAdress}</p>
@@ -60,7 +60,7 @@ const SignupForm = () => {
 					type="email"
 					name="email"
 					placeholder="Enter Your email"
-					className="border-b-2 text-lg font-ubuntu text-white py-2 px-4 w-[90%] focus:outline-none placeholder:text-white"
+					className="border-b-2 text-lg font-ubuntu text-white py-2 md:py-5 px-4 w-[90%] focus:outline-none placeholder:text-white"
 				/>
 				<SubmitButton />
 			</form>
