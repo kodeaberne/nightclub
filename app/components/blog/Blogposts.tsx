@@ -23,7 +23,6 @@ export default function Blogposts({ blogposts }: { blogposts: any }) {
 	// Calculate if there are more pages
 	const totalPages = Math.ceil(blogposts.length / postsPerPage);
 	const hasNextPage = currentPage < totalPages;
-	const hasPrevPage = currentPage > 1;
 
 	// Function to change page
 	const changePage = (newPage: number) => {
@@ -32,9 +31,9 @@ export default function Blogposts({ blogposts }: { blogposts: any }) {
 
 	return (
 		<section className="w-full flex flex-col relative py-10">
-			<div className="flex flex-col gap-12 mx-auto items-center justify-center">
-				{currentPosts.map((blogpost: any) => (
-					<div key={blogpost.id} className="flex flex-col gap-6">
+			<div className="flex flex-col gap-12 md:gap-0 mx-auto items-center justify-center">
+				{currentPosts.map((blogpost: any, index: number) => (
+					<div key={blogpost.id} className={`md:h-100 flex flex-col gap-6 ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
 						<Image
 							src={blogpost.asset.url}
 							alt={blogpost.title}
@@ -42,9 +41,9 @@ export default function Blogposts({ blogposts }: { blogposts: any }) {
 							height={100}
 							loading="eager"
 							unoptimized={true}
-							className="w-full h-full object-cover"
+							className="w-full md:w-1/2 h-full object-cover"
 						/>
-						<div className="flex flex-col gap-4 w-[95%] mx-auto justify-center">
+						<div className={`flex flex-col gap-4 w-[95%] mx-auto ${index % 2 === 1 ? 'md:ml-10' : 'md:mr-10'} justify-center`}>
 							<h2 className="text-2xl font-medium uppercase text-ellipsis overflow-hidden whitespace-nowrap">
 								{blogpost.title}
 							</h2>
