@@ -58,17 +58,20 @@ export default function MenuOverlay({ isOpen, onClose }: MenuOverlayProps) {
 						onClick={onClose}
 					>
 						<nav className="flex flex-col items-center gap-12">
-                            <button
-                                onClick={onClose}
-                                className="absolute top-8 right-8"
-                            >
-                                <TfiClose size={43} />
-                            </button>
+							<button
+								onClick={onClose}
+								className="absolute top-8 right-8"
+							>
+								<TfiClose size={43} />
+							</button>
 							{navLinks.map((link) => {
 								const isActive =
-									pathname === link.href ||
-									(link.href === '/' &&
-										pathname.startsWith(link.href));
+									link.href === '/'
+										? pathname === '/'
+										: pathname === link.href ||
+											pathname.startsWith(
+												link.href + '/',
+											);
 
 								return (
 									<Link
