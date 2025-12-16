@@ -16,7 +16,7 @@ import 'swiper/css/pagination';
 // Events component
 export default function Events({ events }: { events: any }) {
 	return (
-		<section className="w-full relative pb-10">
+		<section className="w-full relative pb-10 md:w-[90%] md:mx-auto">
 			<div className="absolute inset-0 bg-[url('/index/events/slider_bg_overlay.png')] bg-cover bg-center opacity-25"></div>
 			<div className="relative z-10">
 				<Header title="Events" />
@@ -29,7 +29,13 @@ export default function Events({ events }: { events: any }) {
 						'--swiper-pagination-bullet-horizontal-gap': '6px',
 						'--swiper-pagination-bullet-border-radius': '0px',
 					}}
-					spaceBetween={50}
+					spaceBetween={5}
+					breakpoints={{
+						1024: {
+							slidesPerView: 2,
+							spaceBetween: 30,
+						},
+					}}
 					slidesPerView={1}
 					modules={[Autoplay, Pagination]}
 					autoplay={{
@@ -54,14 +60,14 @@ export default function Events({ events }: { events: any }) {
 							location: string;
 						}) => (
 							<SwiperSlide key={event.id}>
-								<div className="flex flex-col mx-5 group items-center justify-center hover:border-t border-pink bg-[url('/index/events/slider_bg_overlay.png')] bg-cover bg-center">
+								<div className="flex flex-col mx-5 md:mx-0 lg:mb-20 group items-center justify-center hover:border-t border-pink bg-[url('/index/events/slider_bg_overlay.png')] bg-cover bg-center">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="32"
 										height="32"
 										viewBox="0 0 32 32"
 										fill="none"
-										className="w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all ease-in-out duration-800 absolute left-5 top-0 z-10"
+										className="w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all ease-in-out duration-800 absolute left-5 lg:left-0 top-0 z-10"
 									>
 										<path
 											d="M0 32V0H32L0 32Z"
@@ -77,10 +83,10 @@ export default function Events({ events }: { events: any }) {
 										className="w-full h-full object-cover col-span-1 row-start-1 row-end-3 group-hover:filter group-hover:brightness-20 transition-all duration-300"
 										unoptimized={true}
 									/>
-									<button className="opacity-0 translate-y-[-50%] group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-800 group-hover:block font-bold px-6 py-3 bg-pink absolute right-(calc(50%-50px)) top-[25%] cursor-pointer">
+									<button className="opacity-0 translate-y-[-50%] group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-800 group-hover:block font-bold px-6 py-3 bg-pink absolute right-(calc(50%-50px)) top-[25%] md:top-[15%] lg:top-[20%] xl:top-[25%] cursor-pointer">
 										Book Now
 									</button>
-									<div className="opacity-0 translate-y-[20%] group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-800 flex flex-col gap-2 mx-5 px-3 py-6 bg-black absolute left-0 bottom-10">
+									<div className="opacity-0 translate-y-[20%] group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-800 flex flex-col gap-2 mx-5 md:mx-0 px-3 py-6 bg-black absolute left-0 bottom-10 lg:bottom-30">
 										<h2 className="opacity-0 translate-y-[20%] group-hover:translate-y-0 group-hover:opacity-100 transition-all ease-in-out duration-800 text-2xl font-medium uppercase">
 											{event.title}
 										</h2>
@@ -114,7 +120,7 @@ export default function Events({ events }: { events: any }) {
 										height="32"
 										viewBox="0 0 32 32"
 										fill="none"
-										className="w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all ease-in-out duration-800 absolute right-5 bottom-10"
+										className="w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all ease-in-out duration-800 absolute right-5 lg:right-0 bottom-10 lg:bottom-30"
 									>
 										<path
 											d="M32 32H0L32 0V32Z"
