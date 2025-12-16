@@ -5,7 +5,7 @@
 
 // Imports
 import { useActionState } from 'react';
-import { submitComment } from '@/app/blog/actions';
+import { submitContact } from '@/app/contact/actions';
 import { useFormStatus } from 'react-dom';
 
 // Response message
@@ -14,7 +14,7 @@ const ResponseMessage = ({ state }) => {
 		<>
 			{state.success === true && (
 				<p className="text-green-400 self-center">
-					Your comment has been posted.
+					Your message has been sent.
 				</p>
 			)}
 			{state.success === false && (
@@ -33,17 +33,17 @@ const SubmitButton = () => {
 	return (
 		<button
 			type="submit"
-			className={`border-y-2 py-4 text-lg font-medium hover:text-pink transition-all duration-300 self-end px-8 cursor-pointer ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
+			className={`border-y-2 py-4 text-lg font-medium hover:text-pink transition-all duration-300 self-end px-12 cursor-pointer ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
 			disabled={pending}
 		>
-			{pending ? 'Submitting..' : 'SUBMIT'}
+			{pending ? 'Submitting..' : 'SEND'}
 		</button>
 	);
 };
 
 // Signup form
-const PostComment = ({ blogpostId }: { blogpostId: string }) => {
-	const [state, postComment] = useActionState(submitComment, {
+const PostMessage = () => {
+	const [state, postMessage] = useActionState(submitContact, {
 		success: null,
 		errors: {},
 		fields: {},
@@ -53,11 +53,8 @@ const PostComment = ({ blogpostId }: { blogpostId: string }) => {
 	return (
 		<>
 			<ResponseMessage state={state} />
-			<h1 className="text-4xl font-bold pl-10 font-ubuntu uppercase">
-				Leave a comment
-			</h1>
 			<form
-				action={postComment}
+				action={postMessage}
 				className="flex flex-col gap-4 w-[90%] items-center justify-center mx-auto"
 			>
 				{state.errors?.name && (
@@ -69,19 +66,27 @@ const PostComment = ({ blogpostId }: { blogpostId: string }) => {
 					placeholder="Your Name"
 					className="border-2 text-lg font-ubuntu text-white py-4 px-4 w-full focus:outline-none placeholder:text-white"
 				/>
+				{state.errors?.email && (
+					<p className="text-pink">{state.errors.email}</p>
+				)}
+				<input
+					type="email"
+					name="email"
+					placeholder="Your Email"
+					className="border-2 text-lg font-ubuntu text-white py-4 px-4 w-full focus:outline-none placeholder:text-white"
+				/>
 				{state.errors?.content && (
 					<p className="text-pink">{state.errors.content}</p>
 				)}
 				<textarea
 					name="content"
-					placeholder="Your Comment"
+					placeholder="Your Message"
 					className="border-2 text-lg font-ubuntu text-white py-4 h-120 px-4 w-full focus:outline-none placeholder:text-white"
 				/>
-				<input type="hidden" name="blogpostId" value={blogpostId} />
 				<SubmitButton />
 			</form>
 		</>
 	);
 };
 
-export default PostComment;
+export default PostMessage;
