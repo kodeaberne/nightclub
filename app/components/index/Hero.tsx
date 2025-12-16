@@ -42,6 +42,7 @@ export default function Hero() {
       xmlns="http://www.w3.org/2000/svg" 
       width="320" 
       height="49" 
+      className="md:w-[700px] md:h-[auto]"
       viewBox="0 0 320 49"
       initial={{ rotateX: 90 }}
       animate={{ rotateX: 0 }}
@@ -55,7 +56,7 @@ export default function Hero() {
       transition={{ ...transition, delay: delay2 }}
       className="flex flex-col justify-center items-center"
       >
-        <h2 className="text-xs font-medium uppercase tracking-[13px] text-shadow-xs text-shadow-black">Have a good time</h2>
+        <h2 className="text-xs md:text-3xl font-medium uppercase tracking-[13px] md:tracking-[26px] text-shadow-xs text-shadow-black">Have a good time</h2>
         <Image src={bottomLine} alt="Bottom Line" width={320} height={49} className="w-full h-auto" />
       </motion.div>
     </section>
