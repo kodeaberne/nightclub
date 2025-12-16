@@ -13,10 +13,14 @@ const ResponseMessage = ({ state }) => {
 	return (
 		<>
 			{state.success === true && (
-				<p className="text-green-400 self-center">Your comment has been posted.</p>
+				<p className="text-green-400 self-center">
+					Your comment has been posted.
+				</p>
 			)}
 			{state.success === false && (
-				<p className="text-red-400 self-center">Something went wrong. Please try again</p>
+				<p className="text-red-400 self-center">
+					Something went wrong. Please try again
+				</p>
 			)}
 		</>
 	);
@@ -29,7 +33,7 @@ const SubmitButton = () => {
 	return (
 		<button
 			type="submit"
-			className={`border-y-2 py-4 text-lg font-medium px-8 cursor-pointer ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
+			className={`border-y-2 py-4 text-lg font-medium hover:text-pink transition-all duration-300 self-end px-8 cursor-pointer ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
 			disabled={pending}
 		>
 			{pending ? 'Submitting..' : 'SUBMIT'}
@@ -49,9 +53,12 @@ const PostComment = ({ blogpostId }: { blogpostId: string }) => {
 	return (
 		<>
 			<ResponseMessage state={state} />
+			<h1 className="text-4xl font-bold pl-10 font-ubuntu uppercase">
+				Leave a comment
+			</h1>
 			<form
 				action={postComment}
-				className="flex flex-col gap-4 items-center w-full"
+				className="flex flex-col gap-4 w-[90%] items-center justify-center mx-auto"
 			>
 				{state.errors?.name && (
 					<p className="text-pink">{state.errors.name}</p>
@@ -59,16 +66,16 @@ const PostComment = ({ blogpostId }: { blogpostId: string }) => {
 				<input
 					type="text"
 					name="name"
-					placeholder="Your name"
-					className="border-b-2 text-lg font-ubuntu text-white py-2 px-4 w-[90%] focus:outline-none placeholder:text-white"
+					placeholder="Your Name"
+					className="border-2 text-lg font-ubuntu text-white py-4 px-4 w-full focus:outline-none placeholder:text-white"
 				/>
 				{state.errors?.content && (
 					<p className="text-pink">{state.errors.content}</p>
 				)}
 				<textarea
 					name="content"
-					placeholder="Your comment"
-					className="border-b-2 text-lg font-ubuntu text-white py-2 px-4 w-[90%] focus:outline-none placeholder:text-white"
+					placeholder="Your Comment"
+					className="border-2 text-lg font-ubuntu text-white py-4 h-120 px-4 w-full focus:outline-none placeholder:text-white"
 				/>
 				<input type="hidden" name="blogpostId" value={blogpostId} />
 				<SubmitButton />
