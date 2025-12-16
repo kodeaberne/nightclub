@@ -51,7 +51,7 @@ export default function Testimonials({ testimonials }: { testimonials: any }) {
                         twitter: string;
 					}) => (
 						<SwiperSlide key={testimonial.id}>
-							<div className="flex flex-col items-center justify-center gap-6">
+							<div className="flex flex-col items-center justify-center gap-6 md:mx-20">
 								<Image
 									src={testimonial.asset.url}
 									alt={testimonial.name}
@@ -64,7 +64,7 @@ export default function Testimonials({ testimonials }: { testimonials: any }) {
 								<h2 className="text-2xl font-medium uppercase">
 									{testimonial.name}
 								</h2>
-								<p className="text-base font-medium mb-10 mx-10 text-center">{testimonial.content}</p>
+								<p className="text-base font-medium mb-10 mx-10 md:mx-20 lg:mx-40 xl:mx-60 text-center">{testimonial.content}</p>
                                 <SoMe facebook={testimonial.facebook} twitter={testimonial.twitter} />
                             </div>
 						</SwiperSlide>
