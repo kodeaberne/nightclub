@@ -127,6 +127,19 @@ const BookingForm = () => {
 				</h1>
 				<TablesSwiper />
 			</div>
+			<div className="hidden md:grid md:grid-cols-5 md:grid-rows-3 gap-18 w-[80%] mx-auto my-10">
+				{tables.map((table) => (
+					<button key={table.id} className="w-auto h-auto place-items-center"
+					onClick={() => {
+						document.getElementById('table-select').value = table.number;
+					}}
+					>
+						<img src={table.size} alt={`Table ${table.number}`} className="w-full h-full object-fit" />
+						<h2 className="text-2xl font-medium uppercase">{table.number}</h2>
+					</button>
+				))}
+			</div>
+			<h2 className="text-4xl font-bold w-[90%] mx-auto font-ubuntu uppercase">Book a table</h2>
 			<ResponseMessage state={state} />
 			<form
 				action={postBooking}
@@ -135,6 +148,7 @@ const BookingForm = () => {
 				{state.errors?.name && (
 					<p className="text-pink">{state.errors.name}</p>
 				)}
+				<div className="flex flex-col md:flex-row gap-4 w-full">
 				<input
 					type="text"
 					name="name"
@@ -152,9 +166,11 @@ const BookingForm = () => {
 					placeholder="Your Email"
 					className="border-2 text-lg font-ubuntu text-white py-4 px-4 w-full focus:outline-none placeholder:text-white"
 				/>
+				</div>
 				{state.errors?.table && (
 					<p className="text-pink">{state.errors.table}</p>
 				)}
+				<div className="flex flex-col md:flex-row gap-4 w-full">
 				<select
 					name="table"
 					id="table-select"
@@ -202,9 +218,11 @@ const BookingForm = () => {
 					<option value="7">7</option>
 					<option value="8">8</option>
 				</select>
+				</div>
 				{state.errors?.date && (
 					<p className="text-pink">{state.errors.date}</p>
 				)}
+				<div className="flex flex-col md:flex-row gap-4 w-full">
 				<input
 					type="date"
 					name="date"
@@ -225,6 +243,7 @@ const BookingForm = () => {
 					placeholder="Your Contact Number"
 					className="border-2 text-lg font-ubuntu text-white py-4 px-4 w-full focus:outline-none placeholder:text-white"
 				/>
+				</div>
 				<SubmitButton />
 			</form>
 		</>
