@@ -14,7 +14,7 @@ export default function Header({ title }: { title: string }) {
 				alt="Bottom Line"
 				width={320}
 				height={49}
-				className="w-full h-auto"
+				className="w-full h-auto md:w-[60%] lg:w-[50%] xl:w-[40%]"
 			/>
 		</div>
 	);
