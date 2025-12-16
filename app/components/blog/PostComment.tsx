@@ -53,7 +53,7 @@ const PostComment = ({ blogpostId }: { blogpostId: string }) => {
 	return (
 		<>
 			<ResponseMessage state={state} />
-			<h1 className="text-4xl font-bold pl-10 font-ubuntu uppercase">
+			<h1 className="text-4xl font-bold pl-10 md:pl-15 font-ubuntu uppercase">
 				Leave a comment
 			</h1>
 			<form
