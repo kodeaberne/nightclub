@@ -21,13 +21,15 @@ function VideoNavButtons() {
 	return (
 		<div className="flex items-center justify-center gap-4">
 			<button
-            className="cursor-pointer hover:text-pink transition-all duration-300 border text-4xl"
-            onClick={() => swiper.slidePrev()}>
+				className="cursor-pointer hover:text-pink transition-all duration-300 border text-4xl"
+				onClick={() => swiper.slidePrev()}
+			>
 				<RiArrowLeftSFill />
 			</button>
 			<button
-            className="cursor-pointer hover:text-pink transition-all duration-300 border text-4xl"
-            onClick={() => swiper.slideNext()}>
+				className="cursor-pointer hover:text-pink transition-all duration-300 border text-4xl"
+				onClick={() => swiper.slideNext()}
+			>
 				<RiArrowRightSFill />
 			</button>
 		</div>
@@ -41,7 +43,7 @@ export default function Video() {
 			<Header title="Latest Videos" />
 			<Swiper
 				modules={[Pagination]}
-				className="w-full h-full video-swiper"
+				className="w-full md:w-[80%] h-full video-swiper"
 				pagination={{
 					clickable: true,
 					type: 'bullets',
