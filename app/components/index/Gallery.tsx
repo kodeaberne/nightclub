@@ -21,28 +21,99 @@ export default function Gallery({ gallery }: { gallery: any[] }) {
 
 	useEffect(() => setMounted(true), []);
 
+	const visibleItems = gallery.filter((item) => item.id < 8);
+	const firstRowItems = visibleItems.slice(0, 4);
+	const secondRowItems = visibleItems.slice(4, 7);
+
 	return (
 		<section className="w-full flex flex-col relative">
 			<Header title="Night Club Gallery" />
-			<div className="grid gap-4">
-				{gallery.map((item, idx) => (
-					<motion.div key={item.id} /* motion props */>
-						<Image
-							src={item.asset.url}
-							alt={item.description}
-							width={100}
-							height={100}
-							unoptimized
-							loading="lazy"
-							className="w-full h-auto object-cover cursor-pointer"
-							onClick={(e) => {
-								e.stopPropagation();
-								setActiveIndex(idx);
-								setModalOpen(true);
+			<div className="flex flex-col gap-4 md:gap-0">
+				{/* First row: 4 columns */}
+				<div className="grid gap-4 md:gap-0 md:grid-cols-4">
+					{firstRowItems.map((item, idx) => (
+						<motion.div
+							key={item.id}
+							className="w-full"
+							initial={{ x: -(item.id * 100), opacity: 0 }}
+							whileInView={{ x: 0, opacity: 1 }}
+							whileHover={{
+								opacity: 0.9,
+								filter: 'brightness(0.7)',
+								transition: {
+									duration: 0.5,
+									ease: 'easeInOut',
+									delay: 0,
+								},
 							}}
-						/>
-					</motion.div>
-				))}
+							exit={{ x: 100, opacity: 0 }}
+							transition={{
+								duration: 0.3,
+								ease: 'easeOut',
+								delay: 0.3,
+							}}
+							/* motion props */
+						>
+							<Image
+								src={item.asset.url}
+								alt={item.description}
+								width={100}
+								height={100}
+								unoptimized
+								loading="lazy"
+								className="w-full h-full object-cover self-stretch cursor-pointer"
+								onClick={(e) => {
+									e.stopPropagation();
+									setActiveIndex(idx);
+									setModalOpen(true);
+								}}
+							/>
+						</motion.div>
+					))}
+				</div>
+
+				{/* Second row: 3 columns */}
+				<div className="grid gap-4 md:gap-0 md:grid-cols-3">
+					{secondRowItems.map((item, idx) => (
+						<motion.div
+							key={item.id}
+							className="w-full"
+							initial={{ x: -100, opacity: 0 }}
+							whileInView={{ x: 0, opacity: 1 }}
+							whileHover={{
+								opacity: 0.9,
+								filter: 'brightness(0.7)',
+								transition: {
+									duration: 0.5,
+									ease: 'easeInOut',
+									delay: 0,
+								},
+							}}
+							exit={{ x: 100, opacity: 0 }}
+							transition={{
+								duration: 0.3,
+								ease: 'easeInOut',
+								delay: 0.4,
+							}}
+							/* motion props */
+						>
+							<Image
+								src={item.asset.url}
+								alt={item.description}
+								width={100}
+								height={100}
+								unoptimized
+								loading="lazy"
+								className="w-full h-full object-cover self-stretch cursor-pointer"
+								onClick={(e) => {
+									e.stopPropagation();
+									setActiveIndex(firstRowItems.length + idx);
+									setModalOpen(true);
+								}}
+							/>
+						</motion.div>
+					))}
+				</div>
 			</div>
 
 			{mounted &&
