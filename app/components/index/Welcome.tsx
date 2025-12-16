@@ -45,7 +45,7 @@ function Content({
 
 	return (
 		<div
-			className="group flex flex-col items-center justify-center m-6 h-auto focus:outline-none relative"
+			className="group flex flex-col w-full items-center justify-center m-6 md:m-4 h-auto focus:outline-none relative"
 			tabIndex={isMobile ? 0 : undefined}
 			onMouseEnter={() => !isMobile && setIsActive(true)}
 			onMouseLeave={() => !isMobile && setIsActive(false)}
@@ -186,8 +186,9 @@ export default function Welcome() {
 	};
 
 	return (
-		<section className="w-full min-h-screen mb-40">
+		<section className="w-full min-h-screen md:min-h-auto md:pb-20 lg:w-[90%] lg:mx-auto">
 			<Header title="Welcome in nightclub" />
+			<div className="flex flex-col md:flex-row w-full">
 			{Object.values(descriptions).map((description) => (
 				<Content
 					key={description.id}
@@ -197,6 +198,7 @@ export default function Welcome() {
 					icon={description.icon}
 				/>
 			))}
+			</div>
 		</section>
 	);
 }
