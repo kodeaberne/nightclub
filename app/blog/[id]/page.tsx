@@ -77,7 +77,7 @@ export default async function Blogpost({ params }: { params: { id: string } }) {
 		<Suspense fallback={<div>Loading...</div>}>
 			<Navigation />
 			<Title title="Blog Post" />
-			<section className="w-full flex flex-col relative gap-12">
+			<section className="w-full md:w-[80%] mx-auto flex flex-col relative gap-12">
 				<Image
 					src={blogpost.asset.url}
 					alt={blogpost.title}
@@ -99,7 +99,7 @@ export default async function Blogpost({ params }: { params: { id: string } }) {
 					</p>
 				</div>
 			</section>
-			<section className="w-full flex flex-col relative py-10 gap-12">
+			<section className="w-full md:w-[80%] mx-auto flex flex-col relative py-10 gap-12">
 				<Comments params={params} />
 				<PostComment blogpostId={blogpost.id} />
 			</section>
