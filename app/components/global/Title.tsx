@@ -12,7 +12,7 @@ export default function Title({ title }: { title: string }) {
 				alt="Bottom Line"
 				width={320}
 				height={49}
-				className="w-full h-auto z-1"
+				className="w-full md:w-[60%] lg:w-[50%] xl:w-[40%] h-auto z-1"
 			/>
 		</div>
 	);
