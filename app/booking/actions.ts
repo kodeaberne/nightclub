@@ -2,13 +2,26 @@
 
 // @ts-nocheck
 
+// Fetch booking data from API to check if the table is available
+const fetchBooking = async () => {
+	const response = await fetch(`http://localhost:4000/reservations`);
+	const data = await response.json();
+	return data;
+};
+
 export const submitBooking = async (prevState: any, formData: any) => {
+	const data = await fetchBooking();
+
 	const name = formData.get('name');
 	const email = formData.get('email');
 	const table = formData.get('table');
 	const guests = formData.get('guests');
 	const date = formData.get('date');
 	const phone = formData.get('phone');
+
+	const isTableBooked = data.some(
+		(item: any) => item.table === table && item.date === date,
+	);
 
 	const state = {
 		success: null,
@@ -28,7 +41,6 @@ export const submitBooking = async (prevState: any, formData: any) => {
 	} else if (name.length < 3) {
 		state.errors.name = 'Your name must me at least 3 characters long';
 	}
-
 
 	if (!email) {
 		state.errors.email = 'Please fill out your email';
@@ -58,6 +70,11 @@ export const submitBooking = async (prevState: any, formData: any) => {
 		state.errors.phone = 'Please fill out your phone';
 	} else if (phone.length < 6) {
 		state.errors.phone = 'Your phone must me at least 6 characters long';
+	}
+
+	// Check availability after validation but before submission
+	if (isTableBooked) {
+		state.errors.table = 'Table is already booked on this date';
 	}
 
 	if (Object.keys(state.errors).length > 0) {

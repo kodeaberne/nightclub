@@ -41,7 +41,7 @@ const SubmitButton = () => {
 			className={`border-y-2 py-4 text-lg font-medium hover:text-pink transition-all duration-300 self-end px-12 cursor-pointer ${pending ? 'opacity-50 cursor-not-allowed' : ''}`}
 			disabled={pending}
 		>
-			{pending ? 'Submitting..' : 'SEND'}
+			{pending ? 'Submitting..' : 'RESERVE'}
 		</button>
 	);
 };
