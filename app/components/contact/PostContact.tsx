@@ -55,7 +55,7 @@ const PostMessage = () => {
 			<ResponseMessage state={state} />
 			<form
 				action={postMessage}
-				className="flex flex-col gap-4 w-[90%] items-center justify-center mx-auto"
+				className="flex flex-col gap-4 w-[90%] md:w-[60%] lg:w-[50%] xl:w-[40%] items-center justify-center mx-auto"
 			>
 				{state.errors?.name && (
 					<p className="text-pink">{state.errors.name}</p>
