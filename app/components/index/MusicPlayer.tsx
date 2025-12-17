@@ -101,6 +101,16 @@ function Tracks({
 				modules={[Navigation, Pagination, Autoplay]}
 				spaceBetween={50}
 				slidesPerView={1}
+				breakpoints={{
+					768: {
+						slidesPerView: 3,
+						spaceBetween: 0,
+					},
+					1024: {
+						slidesPerView: 5,
+						spaceBetween: 0,
+					},
+				}}
 				className="w-full h-full"
 				initialSlide={currentTrackIndex || 0}
 				style={{
@@ -124,14 +134,14 @@ function Tracks({
 			>
 				{tracks.map((track) => (
 					<SwiperSlide key={track.id}>
-						<div className="h-full w-full mx-auto flex flex-col items-center justify-center relative">
+						<div className="h-full w-full group mx-auto flex flex-col items-center justify-center relative">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="32"
 								height="32"
 								viewBox="0 0 32 32"
 								fill="none"
-								className="w-12 h-12 absolute left-0 top-0 z-10"
+								className="w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all duration-300 absolute left-0 top-0 z-10"
 							>
 								<path d="M0 32V0H32L0 32Z" fill="#FF2A70" />
 							</svg>
@@ -146,7 +156,7 @@ function Tracks({
 								{track.title}
 							</h1>
 							<button
-								className="cursor-pointer text-pink text-6xl absolute self-center justify-self-center z-10 text-center"
+								className="opacity-0 group-hover:opacity-100 transition-all duration-300 cursor-pointer text-pink text-6xl absolute self-center justify-self-center z-10 text-center"
 								onClick={() => {
 									(
 										document.getElementsByClassName(
@@ -159,17 +169,17 @@ function Tracks({
 							>
 								<FaRegPlayCircle />
 							</button>
-						</div>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							width="32"
 							height="32"
 							viewBox="0 0 32 32"
 							fill="none"
-							className="w-12 h-12 absolute right-0 bottom-0"
-						>
+							className="w-0 h-0 group-hover:w-12 group-hover:h-12 transition-all duration-300 absolute right-0 bottom-0"
+							>
 							<path d="M32 32H0L32 0V32Z" fill="#FF2A70" />
 						</svg>
+							</div>
 					</SwiperSlide>
 				))}
 			</Swiper>
@@ -217,8 +227,11 @@ export default function MusicPlayer() {
 	}, [currentTrackIndex, isPlaying]);
 
 	return (
-		<section className="w-full flex flex-col gap-8 items-center justify-center relative pb-10">
+		<section className="w-full md:w-[80%] mx-auto flex flex-col gap-8 md:gap-0 items-center justify-center relative pb-10">
 			<Header title="Night Club Track" />
+			<div className="flex flex-col md:flex-row items-center justify-center w-full gap-4">
+				<Image src={currentTrack.image} alt={currentTrack.title} width={100} height={100} className="w-80 h-80 object-cover hidden md:block" />
+				<div className="flex flex-col items-center justify-center gap-4 w-full">
 			<h2 className="text-2xl font-medium tracking-[7.5%] leading-normal uppercase text-center px-8">
 				{currentTrack.title}
 			</h2>
@@ -288,6 +301,8 @@ export default function MusicPlayer() {
 				>
 					<FaShuffle />
 				</button>
+				</div>
+			</div>
 			</div>
 			<Tracks
 				tracks={tracks}
