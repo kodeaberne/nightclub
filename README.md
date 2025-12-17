@@ -11,7 +11,6 @@ A modern nightclub website built with Next.js, featuring event listings, blog po
     - Motion (Framer Motion) - Animations
     - Swiper - Carousel components
     - React Icons - Icon library
-- **Validation:** Zod
 - **Runtime:** React 19
 
 ## Project Structure
